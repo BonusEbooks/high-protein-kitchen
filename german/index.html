@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonus freischalten | High Protein Power-Küche</title>
+    <title>Bonus-Bereich | High Protein Power-Küche</title>
+
+    <!-- No-Referrer Policy to hide origin from Amazon -->
+    <meta name="referrer" content="no-referrer">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +23,8 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
-            --warning: #ff4d4d;
+            --accent: #22c55e;
+            /* Friendly green for support */
         }
 
         * {
@@ -80,7 +84,6 @@
             font-size: 1.1rem;
         }
 
-        /* Step Card Styling */
         .step-section {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -88,8 +91,8 @@
             border-radius: 2rem;
             padding: 3rem 2rem;
             margin-bottom: 3.5rem;
-            transition: all 0.5s ease;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .step-label {
@@ -114,6 +117,7 @@
             margin-bottom: 2rem;
             font-size: 2.5rem;
             color: var(--primary);
+            opacity: 0.8;
         }
 
         .btn {
@@ -135,10 +139,6 @@
             box-shadow: 0 4px 20px rgba(255, 153, 0, 0.3);
         }
 
-        .btn-amazon:hover {
-            transform: scale(1.05);
-        }
-
         .btn-next {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -158,7 +158,6 @@
             font-style: italic;
         }
 
-        /* Downloads Section (initially hidden) */
         #downloads-area {
             display: none;
             width: 100%;
@@ -180,12 +179,6 @@
             border-radius: 1.5rem;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .ebook-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
         }
 
         .ebook-icon {
@@ -203,14 +196,14 @@
             margin-top: 1rem;
         }
 
-        /* Reminder Banner */
+        /* Reminder Banner - Now friendly & neutral */
         .reminder-banner {
             display: none;
-            background: rgba(255, 77, 77, 0.15);
-            border: 1px dashed var(--warning);
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px dashed var(--accent);
             padding: 1.5rem;
             border-radius: 1rem;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
             max-width: 800px;
             text-align: center;
         }
@@ -238,16 +231,6 @@
                 transform: translateY(0);
             }
         }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-            }
-        }
     </style>
 </head>
 
@@ -255,59 +238,63 @@
 
     <div class="ambient-light"></div>
 
-    <!-- START AREA: 2 STEPS -->
+    <!-- START AREA -->
     <div class="container" id="start-area">
         <header>
-            <h1>Fast geschafft!</h1>
-            <p class="subtitle">Nur noch zwei kleine Schritte zu Ihren Bonus-Inhalten.</p>
+            <h1>Willkommen!</h1>
+            <p class="subtitle">Schön, dass Sie die High Protein Power-Küche genießen.</p>
         </header>
 
         <main>
             <section class="step-section">
-                <div class="step-label">Schritt 1</div>
-                <h2>Ihre Meinung ist uns wichtig!</h2>
+                <div class="step-label">Ihre Hilfe</div>
+                <h2>Darf ich Sie um einen Gefallen bitten?</h2>
                 <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.6;">
-                    Darf ich Sie um eine kurze 5-Sterne Bewertung auf Amazon bitten?
-                    Es dauert nur 30 Sekunden und hilft mir als unabhängiger Autor enorm.
+                    Als unabhängiger Autor ist Ihr ehrliches Feedback für mich unglaublich wertvoll.
+                    Helfen Sie mir und anderen Lesern mit einer kurzen Rezension auf Amazon?
+                    Jede ehrliche Stimme zählt!
                 </p>
                 <div class="stars">★★★★★</div>
+
+                <!-- Security: rel="noreferrer" to prevent tracking -->
                 <a href="https://www.amazon.de/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
-                    target="_blank" id="amazon-btn" class="btn btn-amazon">
-                    Feedback auf Amazon hinterlassen
+                    target="_blank" rel="noreferrer" id="amazon-btn" class="btn btn-amazon">
+                    Ehrliches Feedback geben
                 </a>
-                <p class="small-print">Völlig freiwillig – Ihre Downloads erhalten Sie in jedem Fall.</p>
+
+                <p class="small-print">Absolut freiwillig – Ihre Downloads stehen Ihnen so oder so zur Verfügung.</p>
             </section>
 
             <section class="step-section">
-                <div class="step-label">Schritt 2</div>
-                <h2>Ihre Bonus-Materialien</h2>
+                <div class="step-label">Ihre Geschenke</div>
+                <h2>Zu den Bonus-Downloads</h2>
                 <p style="color: var(--text-gray); margin-bottom: 2rem;">
-                    Holen Sie sich jetzt Ihre 5 exklusiven Bonus-E-Books direkt als PDF.
+                    Hier geht es direkt zu Ihren 5 exklusiven Bonus-E-Books.
                 </p>
                 <button onclick="showDownloads()" class="btn btn-next">
-                    Zu den Bonus-Inhalten &rarr;
+                    Bonus-Inhalte öffnen &rarr;
                 </button>
             </section>
         </main>
     </div>
 
-    <!-- DOWNLOAD AREA (Hidden by default) -->
+    <!-- DOWNLOAD AREA -->
     <div class="container" id="downloads-area">
-        <!-- Reminder Banner -->
         <div id="reminder" class="reminder-banner">
-            <p style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">⚠️ Kurze Bitte...</p>
+            <p style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Haben Sie uns schon kurz unterstützt?</p>
             <p style="font-size: 0.95rem; color: var(--text-gray); margin-bottom: 1rem;">
-                Wir haben Schritt 1 übersprungen – Helfen Sie uns mit einer kurzen 5-Sterne Bewertung?
+                Falls Sie es beim ersten Schritt übersprungen haben: Eine ehrliche Bewertung auf Amazon hilft uns sehr!
             </p>
             <a href="https://www.amazon.de/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
-                target="_blank" class="btn btn-amazon" style="font-size: 0.8rem; padding: 0.7rem 1.5rem;">
-                Jetzt kurz Bewerten
+                target="_blank" rel="noreferrer" class="btn btn-amazon"
+                style="font-size: 0.8rem; padding: 0.7rem 1.5rem;">
+                Kurz auf Amazon bewerten
             </a>
         </div>
 
         <header>
-            <h1 style="font-size: 2.2rem;">Ihre Geschenke</h1>
-            <p class="subtitle">Vielen Dank für Ihren Support!</p>
+            <h1>Ihre E-Books</h1>
+            <p class="subtitle">Vielen Dank für Ihre Unterstützung!</p>
         </header>
 
         <div class="grid">
