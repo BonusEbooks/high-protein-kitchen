@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonus freischalten | High Protein Power-Küche</title>
+    <title>Bonus-Bereich | High Protein Power-Küche</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
+            --warning: #ff4d4d;
         }
 
         * {
@@ -36,99 +37,116 @@
                 radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
             color: var(--text-light);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .ambient-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
             width: 100%;
-            padding: 4rem 2rem;
-            text-align: center;
         }
 
         header {
-            margin-bottom: 4rem;
-            animation: fadeInDown 0.8s ease-out;
+            text-align: center;
+            padding: 3rem 1rem 2rem;
         }
 
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
+            font-size: 1.1rem;
             color: var(--text-gray);
-            font-size: 1.2rem;
+            font-weight: 300;
         }
 
-        /* Step Card Styling */
-        .step-section {
+        /* Navigation between steps */
+        .step-container {
+            display: none;
+        }
+
+        .step-active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Marketing Section (Step 1) */
+        .marketing-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 2rem;
-            padding: 3rem 2rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease-out backwards;
-            position: relative;
+            padding: 3.5rem 2rem;
+            margin: 2rem auto;
+            max-width: 750px;
+            text-align: center;
         }
 
-        .step-label {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-dark));
-            color: #000;
-            padding: 5px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .step-section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        p {
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-
-        /* Stars Styling */
         .stars {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 2rem;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
             filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
         }
 
+        .marketing-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .marketing-text p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 0.05em;
+            border: none;
             cursor: pointer;
         }
 
@@ -136,6 +154,7 @@
             background: linear-gradient(90deg, #FF9900 0%, #FFCC00 100%);
             color: #000;
             box-shadow: 0 4px 20px rgba(255, 153, 0, 0.3);
+            margin-bottom: 1.5rem;
         }
 
         .btn-amazon:hover {
@@ -143,47 +162,114 @@
             box-shadow: 0 6px 25px rgba(255, 153, 0, 0.5);
         }
 
-        .btn-secondary {
+        .btn-next {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-light);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--secondary);
-            color: var(--secondary);
-        }
-
-        .small-print {
-            font-size: 0.85rem;
-            color: rgba(148, 163, 184, 0.5);
             margin-top: 2rem;
+        }
+
+        .btn-next:hover {
+            color: var(--secondary);
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skip-info {
             font-style: italic;
+            color: rgba(148, 163, 184, 0.4);
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+        /* Ebooks Section (Step 2) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ebook-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ebook-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .ebook-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .ebook-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .ebook-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .btn-download {
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: #000;
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        /* Reminder Bar (Sticky/Top) */
+        .reminder-banner {
+            display: none;
+            background: rgba(255, 77, 77, 0.15);
+            border: 1px dashed var(--warning);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                border-color: rgba(255, 77, 77, 0.3);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            50% {
+                border-color: var(--warning);
+                box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+            }
+
+            100% {
+                border-color: rgba(255, 77, 77, 0.3);
             }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+        .reminder-banner p {
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 600;
+        }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
         }
 
         @media (max-width: 600px) {
@@ -192,7 +278,11 @@
             }
 
             .container {
-                padding: 2rem 1rem;
+                padding: 1rem;
+            }
+
+            .marketing-card {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -200,50 +290,148 @@
 
 <body>
 
+    <div class="ambient-light"></div>
+
     <div class="container">
-        <header>
-            <h1>Fast geschafft!</h1>
-            <p class="subtitle">Nur noch zwei kleine Schritte zu Ihren Bonus-Inhalten.</p>
-        </header>
+        <!-- STEP 1: MARKETING/REVIEW -->
+        <div id="step-1" class="step-container step-active">
+            <header>
+                <h1>Bonus freischalten</h1>
+                <p class="subtitle">High Protein Power-Küche</p>
+            </header>
 
-        <main>
-            <!-- STUFE 1: REZENSION -->
-            <section class="step-section">
-                <div class="step-label">Schritt 1</div>
-                <h2>Ihre Meinung ist uns wichtig!</h2>
-                <p>
-                    Vielen Dank, dass Sie sich für die <strong>High Protein Power-Küche</strong> entschieden haben.
-                    Als unabhängiger Autor sind Rezensionen unser wertvollstes Gut. Helfen Sie anderen Lesern dabei, die
-                    richtige Entscheidung zu treffen?
-                </p>
-
+            <div class="marketing-card">
                 <div class="stars">★★★★★</div>
+                <div class="marketing-text">
+                    <h2>Kleine Geste, große Hilfe!</h2>
+                    <p>
+                        Vielen Dank für den Kauf meines Buches! Als unabhängiger Autor lebe ich von ehrlichem Feedback.
+                        Darf ich Sie um eine 5-Sterne-Bewertung auf Amazon bitten? Es dauert nur 30 Sekunden und hilft
+                        mir enorm.
+                    </p>
 
-                <a href="https://www.amazon.de/review/create-review/" target="_blank" class="btn btn-amazon">
-                    Feedback auf Amazon hinterlassen
+                    <a href="https://www.amazon.de/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
+                        target="_blank" id="amazon-btn" class="btn btn-amazon">
+                        Jetzt Rezension schreiben
+                    </a>
+
+                    <br>
+
+                    <button onclick="goToStep2()" class="btn btn-next">
+                        Zu den Downloads &rarr;
+                    </button>
+
+                    <p class="skip-info">
+                        Völlig freiwillig – Ihre Geschenke warten so oder so auf Sie.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: DOWNLOADS -->
+        <div id="step-2" class="step-container">
+            <header>
+                <h1>Ihre exklusiven Geschenke</h1>
+                <p class="subtitle">Vielen Dank für Ihre Treue!</p>
+            </header>
+
+            <!-- Sticky Reminder if Amazon wasn't clicked -->
+            <div id="reminder" class="reminder-banner">
+                <p>⚠️ Kleiner Moment noch...</p>
+                <div style="font-size: 0.95rem; color: var(--text-gray); margin-bottom: 1rem;">
+                    Bevor Sie Ihre E-Books laden: Helfen Sie uns mit einer kurzen Bewertung? Jede Stimme zählt!
+                </div>
+                <a href="https://www.amazon.de/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
+                    target="_blank" class="btn btn-amazon" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;">
+                    Kurz bewerten & Bonus sichern
                 </a>
+            </div>
 
-                <p class="small-print">
-                    Natürlich ist dies völlig freiwillig – die Zusatzinhalte stehen Ihnen in jedem Fall kostenfrei zur
-                    Verfügung.
-                </p>
-            </section>
+            <main class="grid">
+                <!-- Ebook 1 -->
+                <div class="ebook-card">
+                    <span class="ebook-icon">🍳</span>
+                    <h3>Frühstück</h3>
+                    <p>Rezepte für den perfekten proteinreichen Morgen.</p>
+                    <a href="./downloads/Bonus_1.pdf" class="btn btn-download" download>Download PDF</a>
+                </div>
 
-            <!-- STUFE 2: WEITERLEITUNG -->
-            <section class="step-section">
-                <div class="step-label">Schritt 2</div>
-                <h2>Ihre Bonus-E-Books</h2>
-                <p>
-                    Klicken Sie auf den Button unten, um direkt zur Download-Seite Ihrer 5 exklusiven Bonus-E-Books zu
-                    gelangen.
-                </p>
+                <!-- Ebook 2 -->
+                <div class="ebook-card">
+                    <span class="ebook-icon">🥗</span>
+                    <h3>Mittagessen</h3>
+                    <p>Sättigend und gesund durch den Arbeitstag.</p>
+                    <a href="./downloads/Bonus_2.pdf" class="btn btn-download" download>Download PDF</a>
+                </div>
 
-                <a href="./ebooks.html" class="btn btn-secondary">
-                    Zu den Bonus-Inhalten &rarr;
-                </a>
-            </section>
-        </main>
+                <!-- Ebook 3 -->
+                <div class="ebook-card">
+                    <span class="ebook-icon">🍽️</span>
+                    <h3>Abendessen</h3>
+                    <p>Leichte Proteingerichte für den Abend.</p>
+                    <a href="./downloads/Bonus_3.pdf" class="btn btn-download" download>Download PDF</a>
+                </div>
+
+                <!-- Ebook 4 -->
+                <div class="ebook-card">
+                    <span class="ebook-icon">🧁</span>
+                    <h3>Desserts</h3>
+                    <p>Genuss ohne Reue für Naschkatzen.</p>
+                    <a href="./downloads/Bonus_4.pdf" class="btn btn-download" download>Download PDF</a>
+                </div>
+
+                <!-- Ebook 5 -->
+                <div class="ebook-card">
+                    <span class="ebook-icon">🥤</span>
+                    <h3>Snacks & Shakes</h3>
+                    <p>Effektive Unterstützung für Fitness & Alltag.</p>
+                    <a href="./downloads/Bonus_5.pdf" class="btn btn-download" download>Download PDF</a>
+                </div>
+            </main>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="goToStep1()" class="btn btn-next"
+                    style="font-size: 0.75rem; padding: 0.5rem 1rem;">&larr; Zurück</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 High Protein Power-Küche. Alle Rechte vorbehalten.</p>
+        </footer>
     </div>
+
+    <script>
+        let amazonClicked = false;
+
+        // Track the click on Amazon button
+        document.getElementById('amazon-btn').addEventListener('click', () => {
+            amazonClicked = true;
+            // Persistence so it stays hidden on refresh
+            localStorage.setItem('amazon_clicked_B0G1KMD28S', 'true');
+        });
+
+        function goToStep2() {
+            // Check persistence
+            const hasClickedLocal = localStorage.getItem('amazon_clicked_B0G1KMD28S') === 'true';
+
+            document.getElementById('step-1').classList.remove('step-active');
+            document.getElementById('step-2').classList.add('step-active');
+
+            // Show/Hide Reminder
+            if (amazonClicked || hasClickedLocal) {
+                document.getElementById('reminder').style.display = 'none';
+            } else {
+                document.getElementById('reminder').style.display = 'block';
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function goToStep1() {
+            document.getElementById('step-2').classList.remove('step-active');
+            document.getElementById('step-1').classList.add('step-active');
+            window.scrollTo(0, 0);
+        }
+    </script>
 
 </body>
 
