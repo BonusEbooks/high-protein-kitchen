@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Bonus | High Protein Power-Kitchen</title>
+
+    <!-- No-Referrer Policy to hide origin from Amazon -->
+    <meta name="referrer" content="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FFD700;
+            --primary-hover: #E6C200;
+            --secondary: #4facfe;
+            --secondary-dark: #00f2fe;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --accent: #22c55e;
+            /* Friendly green for support */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ambient-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .step-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-label {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-dark));
+            color: #000;
+            padding: 5px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-amazon {
+            background: linear-gradient(90deg, #FF9900 0%, #FFCC00 100%);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(255, 153, 0, 0.3);
+        }
+
+        .btn-next {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .btn-next:hover {
+            color: var(--secondary);
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .small-print {
+            font-size: 0.85rem;
+            color: rgba(148, 163, 184, 0.4);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        #downloads-area {
+            display: none;
+            width: 100%;
+            max-width: 1100px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .ebook-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .ebook-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .btn-download {
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: #000;
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        /* Reminder Banner - Now friendly & neutral */
+        .reminder-banner {
+            display: none;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px dashed var(--accent);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 0 auto 2.5rem;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-light"></div>
+
+    <!-- START AREA -->
+    <div class="container" id="start-area">
+        <header>
+            <h1>Benvenuto!</h1>
+            <p class="subtitle">Siamo lieti che stia apprezzando la High Protein Power-Kitchen.</p>
+        </header>
+
+        <main>
+            <section class="step-section">
+                <div class="step-label">Il Suo Aiuto</div>
+                <h2>Posso chiederLe un favore?</h2>
+                <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.6;">
+                    Come autore indipendente, il Suo feedback onesto è incredibilmente prezioso per me.
+                    Mi aiuta, insieme ad altri lettori, con una breve recensione su Amazon?
+                    Ogni voce onesta conta!
+                </p>
+                <div class="stars">★★★★★</div>
+
+                <!-- Security: rel="noreferrer" to prevent tracking -->
+                <a href="https://www.amazon.it/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
+                    target="_blank" rel="noreferrer" id="amazon-btn" class="btn btn-amazon">
+                    Lascia un Feedback Onesto
+                </a>
+
+                <p class="small-print">Completamente volontario – I Suoi download sono comunque disponibili.</p>
+            </section>
+
+            <section class="step-section">
+                <div class="step-label">I Suoi Regali</div>
+                <h2>Vai ai Download Bonus</h2>
+                <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                    Qui può accedere direttamente ai Suoi 5 E-Book Bonus esclusivi.
+                </p>
+                <button onclick="showDownloads()" class="btn btn-next">
+                    Apri Contenuti Bonus &rarr;
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <!-- DOWNLOAD AREA -->
+    <div class="container" id="downloads-area">
+        <div id="reminder" class="reminder-banner">
+            <p style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Ci ha già supportato brevemente?</p>
+            <p style="font-size: 0.95rem; color: var(--text-gray); margin-bottom: 1rem;">
+                Se ha saltato il primo passaggio: una recensione onesta su Amazon ci aiuta moltissimo!
+            </p>
+            <a href="https://www.amazon.it/review/create-review/?ie=UTF8&channel=glance-detail&asin=B0G1KMD28S"
+                target="_blank" rel="noreferrer" class="btn btn-amazon"
+                style="font-size: 0.8rem; padding: 0.7rem 1.5rem;">
+                Lascia una Recensione su Amazon
+            </a>
+        </div>
+
+        <header>
+            <h1>I Suoi E-Book</h1>
+            <p class="subtitle">Grazie mille per il Suo supporto!</p>
+        </header>
+
+        <div class="grid">
+            <div class="ebook-card">
+                <span class="ebook-icon">🍳</span>
+                <h3>Colazione</h3>
+                <a href="./downloads/Bonus_1.pdf" class="btn btn-download" target="_blank">Leggi Ora</a>
+            </div>
+            <div class="ebook-card">
+                <span class="ebook-icon">🥗</span>
+                <h3>Pranzo</h3>
+                <a href="./downloads/Bonus_2.pdf" class="btn btn-download" target="_blank">Leggi Ora</a>
+            </div>
+            <div class="ebook-card">
+                <span class="ebook-icon">🍽️</span>
+                <h3>Cena</h3>
+                <a href="./downloads/Bonus_3.pdf" class="btn btn-download" target="_blank">Leggi Ora</a>
+            </div>
+            <div class="ebook-card">
+                <span class="ebook-icon">🧁</span>
+                <h3>Dessert</h3>
+                <a href="./downloads/Bonus_4.pdf" class="btn btn-download" target="_blank">Leggi Ora</a>
+            </div>
+            <div class="ebook-card">
+                <span class="ebook-icon">🥤</span>
+                <h3>Snack</h3>
+                <a href="./downloads/Bonus_5.pdf" class="btn btn-download" target="_blank">Leggi Ora</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <button onclick="showStart()" class="btn btn-next" style="font-size: 0.8rem;">&larr; Indietro</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 High Protein Power-Kitchen. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        let amazonClicked = localStorage.getItem('amazon_clicked_B0G1KMD28S') === 'true';
+
+        document.getElementById('amazon-btn').addEventListener('click', () => {
+            amazonClicked = true;
+            localStorage.setItem('amazon_clicked_B0G1KMD28S', 'true');
+        });
+
+        function showDownloads() {
+            document.getElementById('start-area').style.display = 'none';
+            document.getElementById('downloads-area').style.display = 'block';
+
+            if (amazonClicked) {
+                document.getElementById('reminder').style.display = 'none';
+            } else {
+                document.getElementById('reminder').style.display = 'block';
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function showStart() {
+            document.getElementById('downloads-area').style.display = 'none';
+            document.getElementById('start-area').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+
+</html>
